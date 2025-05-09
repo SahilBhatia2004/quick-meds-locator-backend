@@ -1,73 +1,73 @@
-# Welcome to your Lovable project
 
-## Project info
+# Quick Medicine Commerce Backend
 
-**URL**: https://lovable.dev/projects/5e452427-836f-4265-a22c-4f29d2c7e489
+A scalable backend for a medicine ordering application that connects users with nearby pharmacies.
 
-## How can I edit this code?
+## Features
 
-There are several ways of editing your application.
+- User authentication and profile management
+- Medicine search functionality
+- Shopping cart management
+- Order processing with nearest pharmacy assignment
+- Pharmacy geolocation-based assignment
 
-**Use Lovable**
+## Tech Stack
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/5e452427-836f-4265-a22c-4f29d2c7e489) and start prompting.
+- Node.js
+- Express.js
+- MongoDB with Mongoose
+- JWT Authentication
+- Geospatial queries for pharmacy location
 
-Changes made via Lovable will be committed automatically to this repo.
+## Getting Started
 
-**Use your preferred IDE**
+### Prerequisites
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- Node.js (v14+)
+- MongoDB
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Installation
 
-Follow these steps:
+1. Clone the repository
+2. Install dependencies:
+   ```
+   npm install
+   ```
+3. Create `.env` file based on `.env.example`
+4. Start the server:
+   ```
+   npm start
+   ```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## API Endpoints
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Users
+- `POST /api/users/register` - Register a new user
+- `POST /api/users/login` - User login
+- `GET /api/users/profile` - Get user profile
+- `PUT /api/users/profile` - Update user profile
+- `PUT /api/users/password` - Update user password
 
-# Step 3: Install the necessary dependencies.
-npm i
+### Medicines
+- `GET /api/medicines/search?query=paracetamol` - Search for medicines
+- `GET /api/medicines/:id` - Get medicine by ID
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+### Cart
+- `GET /api/cart` - Get user cart
+- `POST /api/cart/add` - Add item to cart
+- `PUT /api/cart/update` - Update cart item quantity
+- `DELETE /api/cart/remove/:medicineId` - Remove item from cart
+- `DELETE /api/cart/clear` - Clear cart
+- `POST /api/cart/prescription` - Upload prescription
 
-**Edit a file directly in GitHub**
+### Pharmacies
+- `GET /api/pharmacies` - Get all pharmacies
+- `GET /api/pharmacies/nearest?longitude=123&latitude=456` - Find nearest pharmacies
+- `POST /api/pharmacies/availability` - Check medicine availability at pharmacy
+- `POST /api/pharmacies/find-with-medicines` - Find pharmacy with all medicines in stock
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/5e452427-836f-4265-a22c-4f29d2c7e489) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+### Orders
+- `POST /api/orders` - Create a new order
+- `GET /api/orders` - Get all user orders
+- `GET /api/orders/:id` - Get order by ID
+- `PUT /api/orders/:id/cancel` - Cancel an order
